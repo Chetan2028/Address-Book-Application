@@ -108,7 +108,7 @@ namespace AddressBookApplication
         /// <exception cref="AddressBookApplication.AddressBookCustomException">Invalid Zip</exception>
         public void ValidateZip(string zip)
         {
-            if (Regex.IsMatch(zip, REGEX_LAST_NAME))
+            if (Regex.IsMatch(zip, REGEX_ZIP))
             {
                 return;
             }
@@ -125,7 +125,7 @@ namespace AddressBookApplication
         /// <exception cref="AddressBookApplication.AddressBookCustomException">Invalid Mobile Number</exception>
         public void ValidateMobileNumber(string mobileNumber)
         {
-            if (Regex.IsMatch(mobileNumber, REGEX_FIRST_NAME))
+            if (Regex.IsMatch(mobileNumber, REGEX_MOBILE_NUMBER))
             {
                 return;
             }
@@ -142,7 +142,7 @@ namespace AddressBookApplication
         /// <exception cref="AddressBookApplication.AddressBookCustomException">Invalid Email</exception>
         public void ValidateEmail(string email)
         {
-            if (Regex.IsMatch(email, REGEX_LAST_NAME))
+            if (Regex.IsMatch(email, REGEX_EMAIL))
             {
                 return;
             }

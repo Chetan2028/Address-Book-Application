@@ -64,6 +64,7 @@ namespace AddressBookApplication
                     Email = email
                 };
                 contactList.Add(contact);
+                Console.WriteLine("Contact Added successfully");
                 nlog.LogDebug("Debug Successfull : AddContact()");
                 nlog.logInfo("AddContact() : Passed");
             }
@@ -99,7 +100,8 @@ namespace AddressBookApplication
             Console.WriteLine("Press 1 to Add Contact");
             Console.WriteLine("Press 2 to Edit Contact");
             Console.WriteLine("Press 3 to Delete Contact");
-            Console.WriteLine("Press 4 to Exit");
+            Console.WriteLine("Press 4 to View Contact");
+            Console.WriteLine("Press 5 to Exit");
         }
 
         /// <summary>
@@ -107,7 +109,7 @@ namespace AddressBookApplication
         /// </summary>
         public void EditContact()
         {
-        Edit: Console.WriteLine("Enter the Contact's first name you want to edit");
+            Console.WriteLine("Enter the Contact's first name you want to edit");
             string firstName = Console.ReadLine();
             Console.WriteLine("Enter the Contact's Last Name you want to edit");
             string lastName = Console.ReadLine();
@@ -119,12 +121,6 @@ namespace AddressBookApplication
                     EditContactList(contactList[index]);
                     nlog.LogDebug("Debug Successfull : EditContact()");
                     nlog.logInfo("EditContact() : Passed");
-                }
-                else
-                {
-                    Console.WriteLine("User Details not matched / User does not exist");
-                    nlog.LogDebug("Debug Unsuccessfull : EditContact()");
-                    goto Edit;
                 }
             }
         }
@@ -214,7 +210,7 @@ namespace AddressBookApplication
             string firstName = Console.ReadLine();
             Console.WriteLine("Enter the Contact's Last Name you want to delete");
             string lastName = Console.ReadLine();
-            for (int index = 0; index< contactList.Count; index++)
+            for (int index = 0; index < contactList.Count; index++)
             {
                 if (contactList[index].FirstName.Equals(firstName) && contactList[index].LastName.Equals(lastName))
                 {
@@ -224,37 +220,67 @@ namespace AddressBookApplication
                     nlog.logInfo("Delete Contact : Passed()");
                     return;
                 }
-                Console.WriteLine("Contact Not Found");
-                nlog.LogError("Contact name not found");
-                nlog.LogDebug("Debug Unsuccessfull : DeleteContact()");
             }
         }
 
+        /// <summary>
+        /// Views the contact.
+        /// </summary>
+        public void ViewContact()
+        {
+            if (contactList.Count != 0)
+            {
+                for (int index = 0; index < contactList.Count; index++)
+                {
+                    Console.WriteLine($"Contact FirstName        :    {contactList[index].FirstName}");
+                    Console.WriteLine($"Contact LastName         :    {contactList[index].LastName}");
+                    Console.WriteLine($"Contact Address          :    {contactList[index].Address}");
+                    Console.WriteLine($"Contact City             :    {contactList[index].City}");
+                    Console.WriteLine($"Contact State            :    {contactList[index].State}");
+                    Console.WriteLine($"Contact Zip Code         :    {contactList[index].Zip}");
+                    Console.WriteLine($"Contact Mobile Number    :    {contactList[index].MobileNumber}");
+                    Console.WriteLine($"Contact Email Id         :    {contactList[index].Email}");
+                    Console.WriteLine("-------------------------*****************-------------------------------");
+                }
+            }
+            else
+            {
+                Console.WriteLine("No Contacts to display");
+            }
+        }
         /// <summary>
         /// Addresses the book menu.
         /// </summary>
         public void AddressBookMenu()
         {
-            DisplayMenu();
-            Console.WriteLine("Enter your choice");
-            int choice = Convert.ToInt32(Console.ReadLine());
-            switch (choice)
+            bool flag = true;
+            while (flag)
             {
-                case 1:
-                    AddContact();
-                    break;
-                case 2:
-                    EditContact();
-                    break;
-                case 3:
-                    DeleteContact();
-                    break;
-                case 4:
-                    Environment.Exit(0);
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice");
-                    break;
+                DisplayMenu();
+                Console.WriteLine("Enter your choice");
+                int choice = Convert.ToInt32(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1:
+                        AddContact();
+                        break;
+                    case 2:
+                        EditContact();
+                        break;
+                    case 3:
+                        DeleteContact();
+                        break;
+                    case 4:
+                        ViewContact();
+                        break;
+                    case 5:
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice");
+                        flag = false;
+                        break;
+                }
             }
         }
     }
