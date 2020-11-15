@@ -11,8 +11,8 @@ namespace AddressBookApplication
         private string address;
         private string city;
         private string state;
-        private int zip;
-        private long mobileNumber;
+        private string zip;
+        private string mobileNumber;
         private string email;
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace AddressBookApplication
         /// <value>
         /// The zip.
         /// </value>
-        public int Zip { get => zip; set => zip = value; }
+        public string Zip { get => zip; set => zip = value; }
 
         /// <summary>
         /// Gets or sets the mobile number.
@@ -69,7 +69,7 @@ namespace AddressBookApplication
         /// <value>
         /// The mobile number.
         /// </value>
-        public long MobileNumber { get => mobileNumber; set => mobileNumber = value; }
+        public string MobileNumber { get => mobileNumber; set => mobileNumber = value; }
 
         /// <summary>
         /// Gets or sets the email.

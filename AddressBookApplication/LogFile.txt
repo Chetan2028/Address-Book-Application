@@ -1,1 +1,2 @@
-﻿
+﻿2020-11-15 14:52:01.0212|DEBUG|AddressBookApplication.Nlog|Debug Unsuccessfull : AddContact()
+2020-11-15 14:52:01.1967|ERROR|AddressBookApplication.Nlog|User Details Invalid

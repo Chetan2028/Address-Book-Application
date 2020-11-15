@@ -8,6 +8,8 @@ namespace AddressBookApplication
     {
         Nlog nlog = new Nlog();
 
+        ContactValidator contactValidator = new ContactValidator();
+
         /// To add contact in list
         List<Contact> contactList = new List<Contact>();
 
@@ -16,36 +18,61 @@ namespace AddressBookApplication
         /// </summary>
         public void AddContact()
         {
-            Console.WriteLine("Enter First Name");
-            string firstName = Console.ReadLine();
-            Console.WriteLine("Enter Last Name");
-            string lastName = Console.ReadLine();
-            Console.WriteLine("Enter Address");
-            string address = Console.ReadLine();
-            Console.WriteLine("Enter City");
-            string city = Console.ReadLine();
-            Console.WriteLine("Enter State");
-            string state = Console.ReadLine();
-            Console.WriteLine("Enter Zip Code");
-            int zip = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter Mobile Number");
-            long mobileNumber = Convert.ToInt64(Console.ReadLine());
-            Console.WriteLine("Enter Email");
-            string email = Console.ReadLine();
-
-            Contact contact = new Contact()
+            try
             {
-                FirstName = firstName,
-                LastName = lastName,
-                Address = address,
-                City = city,
-                State = state,
-                Zip = zip,
-                MobileNumber = mobileNumber,
-                Email = email
-            };
+                Console.WriteLine("Enter First Name");
+                string firstName = Console.ReadLine();
+                contactValidator.ValidateFirstName(firstName);
 
-            contactList.Add(contact);
+                Console.WriteLine("Enter Last Name");
+                string lastName = Console.ReadLine();
+                contactValidator.ValidateLastName(lastName);
+
+                Console.WriteLine("Enter Address");
+                string address = Console.ReadLine();
+                contactValidator.ValidateAddress(address);
+
+                Console.WriteLine("Enter City");
+                string city = Console.ReadLine();
+                contactValidator.ValidateCity(city);
+
+                Console.WriteLine("Enter State");
+                string state = Console.ReadLine();
+                contactValidator.ValidateState(state);
+
+                Console.WriteLine("Enter Zip Code");
+                string zip = Console.ReadLine();
+                contactValidator.ValidateZip(zip);
+
+                Console.WriteLine("Enter Mobile Number");
+                string mobileNumber = Console.ReadLine();
+                contactValidator.ValidateMobileNumber(mobileNumber);
+
+                Console.WriteLine("Enter Email");
+                string email = Console.ReadLine();
+                contactValidator.ValidateEmail(email);
+
+                Contact contact = new Contact()
+                {
+                    FirstName = firstName,
+                    LastName = lastName,
+                    Address = address,
+                    City = city,
+                    State = state,
+                    Zip = zip,
+                    MobileNumber = mobileNumber,
+                    Email = email
+                };
+                contactList.Add(contact);
+                nlog.LogDebug("Debug Successfull : AddContact()");
+                nlog.logInfo("AddContact() : Passed");
+            }
+            catch (AddressBookCustomException ex)
+            {
+                nlog.LogDebug("Debug Unsuccessfull : AddContact()");
+                nlog.LogError("User Details Invalid");
+                Console.WriteLine(ex.Message);
+            }
         }
 
         /// <summary>
@@ -106,56 +133,73 @@ namespace AddressBookApplication
         /// <param name="contact">The contact.</param>
         public void EditContactList(Contact contact)
         {
-            Console.WriteLine("Please enter your choice");
-            int choice = Convert.ToInt32(Console.ReadLine());
-            switch (choice)
+            try
             {
-                case 1:
-                    Console.WriteLine("Enter the first name");
-                    string firstName = Console.ReadLine();
-                    contact.FirstName = firstName;
-                    break;
-                case 2:
-                    Console.WriteLine("Enter the last name");
-                    string lastName = Console.ReadLine();
-                    contact.LastName = lastName;
-                    break;
-                case 3:
-                    Console.WriteLine("Enter address");
-                    string address = Console.ReadLine();
-                    contact.Address = address;
-                    break;
-                case 4:
-                    Console.WriteLine("Enter city");
-                    string city = Console.ReadLine();
-                    contact.City = city;
-                    break;
-                case 5:
-                    Console.WriteLine("Enter state");
-                    string state = Console.ReadLine();
-                    contact.State = state;
-                    break;
-                case 6:
-                    Console.WriteLine("Enter zip code");
-                    int zip = Convert.ToInt32(Console.ReadLine());
-                    contact.Zip = zip;
-                    break;
-                case 7:
-                    Console.WriteLine("Enter mobile number");
-                    long mobileNumber = Convert.ToInt64(Console.ReadLine());
-                    contact.MobileNumber = mobileNumber;
-                    break;
-                case 8:
-                    Console.WriteLine("Enter email");
-                    string email = Console.ReadLine();
-                    contact.Email = email;
-                    break;
-                case 9:
-                    Environment.Exit(0);
-                    break;
-                default:
-                    Console.WriteLine("Please enter a valid choice");
-                    break;
+                Console.WriteLine("Please enter your choice");
+                int choice = Convert.ToInt32(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1:
+                        Console.WriteLine("Enter the first name");
+                        string firstName = Console.ReadLine();
+                        contactValidator.ValidateFirstName(firstName);
+                        contact.FirstName = firstName;
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter the last name");
+                        string lastName = Console.ReadLine();
+                        contactValidator.ValidateLastName(lastName);
+                        contact.LastName = lastName;
+                        break;
+                    case 3:
+                        Console.WriteLine("Enter address");
+                        string address = Console.ReadLine();
+                        contactValidator.ValidateAddress(address);
+                        contact.Address = address;
+                        break;
+                    case 4:
+                        Console.WriteLine("Enter city");
+                        string city = Console.ReadLine();
+                        contactValidator.ValidateCity(city);
+                        contact.City = city;
+                        break;
+                    case 5:
+                        Console.WriteLine("Enter state");
+                        string state = Console.ReadLine();
+                        contactValidator.ValidateState(state);
+                        contact.State = state;
+                        break;
+                    case 6:
+                        Console.WriteLine("Enter zip code");
+                        string zip = Console.ReadLine();
+                        contactValidator.ValidateZip(zip);
+                        contact.Zip = zip;
+                        break;
+                    case 7:
+                        Console.WriteLine("Enter mobile number");
+                        string mobileNumber = Console.ReadLine();
+                        contactValidator.ValidateMobileNumber(mobileNumber);
+                        contact.MobileNumber = mobileNumber;
+                        break;
+                    case 8:
+                        Console.WriteLine("Enter email");
+                        string email = Console.ReadLine();
+                        contactValidator.ValidateEmail(email);
+                        contact.Email = email;
+                        break;
+                    case 9:
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.WriteLine("Please enter a valid choice");
+                        break;
+                }
+            }
+            catch(AddressBookCustomException ex)
+            {
+                nlog.LogDebug("Debug Unsuccessfull : EditContact()");
+                nlog.LogError("User Credentials are invalid");
+                Console.WriteLine(ex.Message);
             }
         }
 
