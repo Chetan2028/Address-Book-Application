@@ -8,7 +8,7 @@ namespace AddressBookApplication
         {
             Console.WriteLine("Welcome to Address Book Implementation");
             AddressBook addressBook = new AddressBook();
-            addressBook.AddContact();
+            addressBook.AddressBookMenu();
         }
     }
 }
