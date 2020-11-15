@@ -98,7 +98,8 @@ namespace AddressBookApplication
         {
             Console.WriteLine("Press 1 to Add Contact");
             Console.WriteLine("Press 2 to Edit Contact");
-            Console.WriteLine("Press 3 to Exit");
+            Console.WriteLine("Press 3 to Delete Contact");
+            Console.WriteLine("Press 4 to Exit");
         }
 
         /// <summary>
@@ -106,9 +107,9 @@ namespace AddressBookApplication
         /// </summary>
         public void EditContact()
         {
-            Console.WriteLine("Enter the first name you want to edit");
+        Edit: Console.WriteLine("Enter the Contact's first name you want to edit");
             string firstName = Console.ReadLine();
-            Console.WriteLine("Enter Last Name you want to edit");
+            Console.WriteLine("Enter the Contact's Last Name you want to edit");
             string lastName = Console.ReadLine();
             for (int index = 0; index < contactList.Count; index++)
             {
@@ -123,6 +124,7 @@ namespace AddressBookApplication
                 {
                     Console.WriteLine("User Details not matched / User does not exist");
                     nlog.LogDebug("Debug Unsuccessfull : EditContact()");
+                    goto Edit;
                 }
             }
         }
@@ -195,11 +197,36 @@ namespace AddressBookApplication
                         break;
                 }
             }
-            catch(AddressBookCustomException ex)
+            catch (AddressBookCustomException ex)
             {
                 nlog.LogDebug("Debug Unsuccessfull : EditContact()");
                 nlog.LogError("User Credentials are invalid");
                 Console.WriteLine(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Deletes the contact.
+        /// </summary>
+        public void DeleteContact()
+        {
+            Console.WriteLine("Enter the Contact's First Name you want to delete");
+            string firstName = Console.ReadLine();
+            Console.WriteLine("Enter the Contact's Last Name you want to delete");
+            string lastName = Console.ReadLine();
+            for (int index = 0; index< contactList.Count; index++)
+            {
+                if (contactList[index].FirstName.Equals(firstName) && contactList[index].LastName.Equals(lastName))
+                {
+                    contactList.RemoveAt(index);
+                    Console.WriteLine("Contact Deleted Successfully");
+                    nlog.LogDebug("Debug Successfull : DeleteContact()");
+                    nlog.logInfo("Delete Contact : Passed()");
+                    return;
+                }
+                Console.WriteLine("Contact Not Found");
+                nlog.LogError("Contact name not found");
+                nlog.LogDebug("Debug Unsuccessfull : DeleteContact()");
             }
         }
 
@@ -220,6 +247,9 @@ namespace AddressBookApplication
                     EditContact();
                     break;
                 case 3:
+                    DeleteContact();
+                    break;
+                case 4:
                     Environment.Exit(0);
                     break;
                 default:
