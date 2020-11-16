@@ -52,6 +52,12 @@ namespace AddressBookApplication
                 string email = Console.ReadLine();
                 contactValidator.ValidateEmail(email);
 
+                bool result = contactValidator.CheckForDuplicates(contactList, firstName, lastName);
+                if (result)
+                {
+                    AddContact();
+                }
+
                 Contact contact = new Contact()
                 {
                     FirstName = firstName,

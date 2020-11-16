@@ -23,7 +23,7 @@ namespace AddressBookApplication
         /// <exception cref="AddressBookApplication.AddressBookCustomException">Invalid First Name</exception>
         public void ValidateFirstName(string firstName)
         {
-            if (Regex.IsMatch(firstName , REGEX_FIRST_NAME))
+            if (Regex.IsMatch(firstName, REGEX_FIRST_NAME))
             {
                 return;
             }
@@ -40,7 +40,7 @@ namespace AddressBookApplication
         /// <exception cref="AddressBookApplication.AddressBookCustomException">Invalid Last Name</exception>
         public void ValidateLastName(string lastName)
         {
-            if (Regex.IsMatch(lastName,REGEX_LAST_NAME))
+            if (Regex.IsMatch(lastName, REGEX_LAST_NAME))
             {
                 return;
             }
@@ -150,6 +150,30 @@ namespace AddressBookApplication
             {
                 throw new AddressBookCustomException(AddressBookCustomException.ExceptionType.INVALID_EMAIL, "Invalid Email");
             }
+        }
+
+        /// <summary>
+        /// Checks for duplicates.
+        /// </summary>
+        /// <param name="contactList">The contact list.</param>
+        /// <param name="firstName">The first name.</param>
+        /// <param name="lastName">The last name.</param>
+        /// <returns></returns>
+        public bool CheckForDuplicates(List<Contact> contactList, string firstName, string lastName)
+        {
+            for (int index = 0; index < contactList.Count; index++)
+            {
+                if (contactList[index].FirstName.Equals(firstName) && contactList[index].LastName.Equals(lastName))
+                {
+                    Console.WriteLine("Contact name already exists!! \nPlease enter your details once again");
+                    return true;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            return false;
         }
     }
 }

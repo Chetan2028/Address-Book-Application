@@ -78,3 +78,27 @@
 2020-11-16 11:16:52.7878|INFO|AddressBookApplication.Nlog|AddAddressBook() : passed
 2020-11-16 11:48:10.4414|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddAddressBook()
 2020-11-16 11:48:10.6056|INFO|AddressBookApplication.Nlog|AddAddressBook() : passed
+2020-11-16 17:48:48.9353|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddAddressBook()
+2020-11-16 17:48:49.1273|INFO|AddressBookApplication.Nlog|AddAddressBook() : passed
+2020-11-16 17:49:20.0446|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddContact()
+2020-11-16 17:49:20.0446|INFO|AddressBookApplication.Nlog|AddContact() : Passed
+2020-11-16 17:49:58.7347|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddAddressBook()
+2020-11-16 17:49:58.9372|INFO|AddressBookApplication.Nlog|AddAddressBook() : passed
+2020-11-16 17:50:29.0404|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddContact()
+2020-11-16 17:50:29.0404|INFO|AddressBookApplication.Nlog|AddContact() : Passed
+2020-11-16 17:51:25.3074|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddContact()
+2020-11-16 17:51:25.3090|INFO|AddressBookApplication.Nlog|AddContact() : Passed
+2020-11-16 17:53:15.1253|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddAddressBook()
+2020-11-16 17:53:15.3249|INFO|AddressBookApplication.Nlog|AddAddressBook() : passed
+2020-11-16 17:53:54.0424|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddContact()
+2020-11-16 17:53:54.0435|INFO|AddressBookApplication.Nlog|AddContact() : Passed
+2020-11-16 17:54:27.2332|DEBUG|AddressBookApplication.Nlog|Debug Unsuccessfull : AddContact()
+2020-11-16 17:54:27.2332|ERROR|AddressBookApplication.Nlog|User Details Invalid
+2020-11-16 17:55:05.2800|DEBUG|AddressBookApplication.Nlog|Debug Unsuccessfull : AddContact()
+2020-11-16 17:55:05.2800|ERROR|AddressBookApplication.Nlog|User Details Invalid
+2020-11-16 17:55:22.5291|DEBUG|AddressBookApplication.Nlog|Debug Unsuccessfull : AddContact()
+2020-11-16 17:55:22.5291|ERROR|AddressBookApplication.Nlog|User Details Invalid
+2020-11-16 17:56:12.5224|DEBUG|AddressBookApplication.Nlog|Debug Unsuccessfull : AddContact()
+2020-11-16 17:56:12.5224|ERROR|AddressBookApplication.Nlog|User Details Invalid
+2020-11-16 17:56:12.5343|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddContact()
+2020-11-16 17:56:12.5343|INFO|AddressBookApplication.Nlog|AddContact() : Passed
