@@ -52,3 +52,29 @@
 2020-11-15 16:46:00.6627|INFO|AddressBookApplication.Nlog|AddContact() : Passed
 2020-11-15 16:46:30.3157|DEBUG|AddressBookApplication.Nlog|Debug Successfull : DeleteContact()
 2020-11-15 16:46:30.3157|INFO|AddressBookApplication.Nlog|Delete Contact : Passed()
+2020-11-16 10:54:53.1068|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddAddressBook()
+2020-11-16 10:54:53.3237|INFO|AddressBookApplication.Nlog|AddAddressBook() : passed
+2020-11-16 10:55:37.2376|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddContact()
+2020-11-16 10:55:37.2376|INFO|AddressBookApplication.Nlog|AddContact() : Passed
+2020-11-16 10:56:28.8747|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddContact()
+2020-11-16 10:56:28.8747|INFO|AddressBookApplication.Nlog|AddContact() : Passed
+2020-11-16 11:00:25.9080|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddAddressBook()
+2020-11-16 11:00:25.9872|INFO|AddressBookApplication.Nlog|AddAddressBook() : passed
+2020-11-16 11:02:53.0284|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddAddressBook()
+2020-11-16 11:02:53.2051|INFO|AddressBookApplication.Nlog|AddAddressBook() : passed
+2020-11-16 11:05:07.7963|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddAddressBook()
+2020-11-16 11:05:07.9587|INFO|AddressBookApplication.Nlog|AddAddressBook() : passed
+2020-11-16 11:05:44.7241|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddAddressBook()
+2020-11-16 11:05:44.7241|INFO|AddressBookApplication.Nlog|AddAddressBook() : passed
+2020-11-16 11:07:50.5839|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddContact()
+2020-11-16 11:07:50.5839|INFO|AddressBookApplication.Nlog|AddContact() : Passed
+2020-11-16 11:09:09.4404|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddContact()
+2020-11-16 11:09:09.4404|INFO|AddressBookApplication.Nlog|AddContact() : Passed
+2020-11-16 11:09:45.7528|DEBUG|AddressBookApplication.Nlog|Debug Successfull : EditContact()
+2020-11-16 11:09:45.7528|INFO|AddressBookApplication.Nlog|EditContact() : Passed
+2020-11-16 11:10:07.1412|DEBUG|AddressBookApplication.Nlog|Debug Successfull : EditContact()
+2020-11-16 11:10:07.1412|INFO|AddressBookApplication.Nlog|EditContact() : Passed
+2020-11-16 11:16:52.6056|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddAddressBook()
+2020-11-16 11:16:52.7878|INFO|AddressBookApplication.Nlog|AddAddressBook() : passed
+2020-11-16 11:48:10.4414|DEBUG|AddressBookApplication.Nlog|Debug Successfull : AddAddressBook()
+2020-11-16 11:48:10.6056|INFO|AddressBookApplication.Nlog|AddAddressBook() : passed

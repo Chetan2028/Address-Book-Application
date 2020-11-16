@@ -248,6 +248,7 @@ namespace AddressBookApplication
                 Console.WriteLine("No Contacts to display");
             }
         }
+
         /// <summary>
         /// Addresses the book menu.
         /// </summary>
@@ -274,11 +275,10 @@ namespace AddressBookApplication
                         ViewContact();
                         break;
                     case 5:
-                        Environment.Exit(0);
+                        flag = false;
                         break;
                     default:
                         Console.WriteLine("Invalid choice");
-                        flag = false;
                         break;
                 }
             }

@@ -7,8 +7,8 @@ namespace AddressBookApplication
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Address Book Implementation");
-            AddressBook addressBook = new AddressBook();
-            addressBook.AddressBookMenu();
+            Directory directory = new Directory();
+            directory.DirectoryMenu();
         }
     }
 }
