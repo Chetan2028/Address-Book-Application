@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
 
@@ -112,7 +114,9 @@ namespace AddressBookApplication
             Console.WriteLine("Press 4 to View Contact");
             Console.WriteLine("Press 5 to Sort the data");
             Console.WriteLine("Press 6 to Write Data into Text File");
-            Console.WriteLine("Press 7 to Exit");
+            Console.WriteLine("Press 7 to Write Data into CSV File");
+            Console.WriteLine("Press 8 to Read Data from CSV File");
+            Console.WriteLine("Press 9 to Exit");
         }
 
         /// <summary>
@@ -292,6 +296,12 @@ namespace AddressBookApplication
                         WriteDataIntoTextFile();
                         break;
                     case 7:
+                        WriteDataIntoCSVFile(contactList);
+                        break;
+                    case 8:
+                        ReadDataFromCSV();
+                        break;
+                    case 9:
                         flag = false;
                         break;
                     default:
@@ -491,6 +501,38 @@ namespace AddressBookApplication
             catch (IOException)
             {
                 Console.WriteLine("File not found");
+            }
+        }
+
+        public void WriteDataIntoCSVFile(List<Contact> record)
+        {
+            string filePath = @"D:\C# Programs\AddressBookApplication\AddressBookApplication\contacts.csv";
+            using(var writer = new StreamWriter(filePath))
+            using(var csvWrite = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csvWrite.WriteRecords(record);
+            }
+        }
+
+        public void ReadDataFromCSV()
+        {
+            string filePath = @"D:\C# Programs\AddressBookApplication\AddressBookApplication\contacts.csv";
+            using(var reader = new StreamReader(filePath))
+            using(var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var records = csv.GetRecords<Contact>();
+                foreach (Contact contact in records)
+                {
+                    Console.WriteLine("\t" + contact.FirstName);
+                    Console.WriteLine("\t" + contact.LastName);
+                    Console.WriteLine("\t" + contact.Address);
+                    Console.WriteLine("\t" + contact.City);
+                    Console.WriteLine("\t" + contact.State);
+                    Console.WriteLine("\t" + contact.Zip);
+                    Console.WriteLine("\t" + contact.MobileNumber);
+                    Console.WriteLine("\t" + contact.Email);
+                    Console.WriteLine("\n");
+                }
             }
         }
     }
