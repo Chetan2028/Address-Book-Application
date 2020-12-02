@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AddressBookApplication
 {
-    class AddressBook
+    public class AddressBook
     {
         Nlog nlog = new Nlog();
 
@@ -289,5 +289,36 @@ namespace AddressBookApplication
                 }
             }
         }
+
+        /// <summary>
+        /// Searchings the contact details by city.
+        /// </summary>
+        /// <param name="searchCity">The search city.</param>
+        /// <returns></returns>
+        /// <exception cref="AddressBookCustomException">City name is not in list</exception>
+        public bool SearchingContactDetailsByCity(string searchCity)
+        {
+            //used to check if city exist and increments the index. If index=0, exception is thrown
+            int index = 0;
+            foreach (Contact contactPerson in contactList)
+            {
+                //checks if city is there in list
+                if (contactPerson.City.Equals(searchCity))
+                {
+                    Console.WriteLine($"First Name : {contactPerson.FirstName} || Last Name: {contactPerson.LastName} || Address: {contactPerson.Address} || City: {contactPerson.City} || State: {contactPerson.State}|| zip: {contactPerson.Zip} || Phone No: {contactPerson.MobileNumber} || eMail: {contactPerson.Email}");
+                    index++;
+                }
+            }
+            if (index == 0)
+            {
+                //custom exception is thrown when city is not in list
+                throw new AddressBookCustomException(AddressBookCustomException.ExceptionType.WRONG_CITY_NAME, "City name is not in list");
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }
+

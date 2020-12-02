@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AddressBookApplication
 {
-    class Contact
+    public class Contact
     {
         private string firstName;
         private string lastName;

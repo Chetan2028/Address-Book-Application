@@ -16,7 +16,8 @@ namespace AddressBookApplication
             INVALID_ZIP,
             INVALID_MOBILENUMBER,
             INVALID_EMAIL,
-            DUPLICATE_ADDRESS_BOOK
+            DUPLICATE_ADDRESS_BOOK,
+            WRONG_CITY_NAME
         }
 
         public ExceptionType type;
