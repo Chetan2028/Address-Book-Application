@@ -185,12 +185,15 @@ namespace AddressBookApplication
             foreach (KeyValuePair<string, List<Contact>> cityDetails in cityDetailsDictionary)
             {
                 Console.WriteLine(cityDetails.Key);
+                int index = 0;
                 foreach (Contact contactPerson in cityDetails.Value)
                 {
                     Console.WriteLine($"First Name : {contactPerson.FirstName} || Last Name: {contactPerson.LastName} || Address: {contactPerson.Address} || City: {contactPerson.City} || State: {contactPerson.State}|| zip: {contactPerson.Zip} || Phone No: {contactPerson.MobileNumber} || eMail: {contactPerson.Email}");
-
+                    index++;
                 }
-
+                //displays name of city and count of contact details
+                Console.WriteLine($"Total no of contact details in {cityDetails.Key} are {index}");
+                Console.WriteLine("");
             }
         }
         /// <summary>
@@ -201,11 +204,15 @@ namespace AddressBookApplication
             foreach (KeyValuePair<string, List<Contact>> stateDetails in stateDetailsDictionary)
             {
                 Console.WriteLine(stateDetails.Key);
+                int index = 0;
                 foreach (Contact contactPerson in stateDetails.Value)
                 {
                     Console.WriteLine($"First Name : {contactPerson.FirstName} || Last Name: {contactPerson.LastName} || Address: {contactPerson.Address} || City: {contactPerson.City} || State: {contactPerson.State}|| zip: {contactPerson.Zip} || Phone No: {contactPerson.MobileNumber} || eMail: {contactPerson.Email}");
-
+                    index++;
                 }
+                //displays name of city and count of contact details
+                Console.WriteLine($"Total no of contact details in {stateDetails.Key} are {index}");
+                Console.WriteLine("");
 
             }
         }
@@ -313,7 +320,7 @@ namespace AddressBookApplication
             while (flag)
             {
                 DirectoryDisplayMenu();
-                Repeat: int choice = Convert.ToInt32(Console.ReadLine());
+            Repeat: int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
                     case 1:
