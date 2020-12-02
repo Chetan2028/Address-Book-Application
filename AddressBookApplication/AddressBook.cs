@@ -109,7 +109,8 @@ namespace AddressBookApplication
             Console.WriteLine("Press 2 to Edit Contact");
             Console.WriteLine("Press 3 to Delete Contact");
             Console.WriteLine("Press 4 to View Contact");
-            Console.WriteLine("Press 5 to Exit");
+            Console.WriteLine("Press 5 to Sort the data");
+            Console.WriteLine("Press 6 to Exit");
         }
 
         /// <summary>
@@ -283,6 +284,9 @@ namespace AddressBookApplication
                         ViewContact();
                         break;
                     case 5:
+                        SortData();
+                        break;
+                    case 6:
                         flag = false;
                         break;
                     default:
@@ -421,6 +425,45 @@ namespace AddressBookApplication
                 stateList.Add(contactPerson.State);
             }
             return stateList;
+        }
+
+        public List<Contact> SortingContactDetails()
+        {
+            Console.WriteLine("Please press 1 to sort the data by name");
+            Console.WriteLine("Please press 2 to sort the data by city");
+            Console.WriteLine("Please press 3 to sort the data by state");
+            Console.WriteLine("Please press 4 to sort the data by zip");
+            Console.WriteLine("Please press any other to return the unsorted contacts");
+            int sortingContacts = Convert.ToInt32(Console.ReadLine());
+            switch (sortingContacts)
+            {
+                case 1:
+                    contactList.Sort((emp1, emp2) => emp1.FirstName.CompareTo(emp2.FirstName));
+                    contactList.Sort((emp1, emp2) => emp1.LastName.CompareTo(emp2.LastName));
+                    return contactList;
+                case 2:
+                    contactList.Sort((emp1, emp2) => emp1.City.CompareTo(emp2.City));
+                    return contactList;
+                case 3:
+                    contactList.Sort((emp1, emp2) => emp1.State.CompareTo(emp2.State));
+                    return contactList;
+                case 4:
+                    contactList.Sort((emp1, emp2) => emp1.Zip.CompareTo(emp2.Zip));
+                    return contactList;
+                default:
+                    return contactList;
+            }
+
+        }
+
+        public void SortData()
+        {
+            List<Contact> sortingContactList = SortingContactDetails();
+            foreach (var contactPerson in sortingContactList)
+            {
+                Console.WriteLine($"First Name : {contactPerson.FirstName} || Last Name: {contactPerson.LastName} || Address: {contactPerson.Address} || City: {contactPerson.City} || State: {contactPerson.State}|| zip: {contactPerson.Zip} || Phone No: {contactPerson.MobileNumber} || eMail: {contactPerson.Email}");
+
+            }
         }
     }
 }
