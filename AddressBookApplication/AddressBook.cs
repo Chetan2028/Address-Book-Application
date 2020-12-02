@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace AddressBookApplication
@@ -110,7 +111,8 @@ namespace AddressBookApplication
             Console.WriteLine("Press 3 to Delete Contact");
             Console.WriteLine("Press 4 to View Contact");
             Console.WriteLine("Press 5 to Sort the data");
-            Console.WriteLine("Press 6 to Exit");
+            Console.WriteLine("Press 6 to Write Data into Text File");
+            Console.WriteLine("Press 7 to Exit");
         }
 
         /// <summary>
@@ -287,6 +289,9 @@ namespace AddressBookApplication
                         SortData();
                         break;
                     case 6:
+                        WriteDataIntoTextFile();
+                        break;
+                    case 7:
                         flag = false;
                         break;
                     default:
@@ -463,6 +468,29 @@ namespace AddressBookApplication
             {
                 Console.WriteLine($"First Name : {contactPerson.FirstName} || Last Name: {contactPerson.LastName} || Address: {contactPerson.Address} || City: {contactPerson.City} || State: {contactPerson.State}|| zip: {contactPerson.Zip} || Phone No: {contactPerson.MobileNumber} || eMail: {contactPerson.Email}");
 
+            }
+        }
+
+        public void WriteDataIntoTextFile()
+        {
+            try
+            {
+                Contact c;
+                string line;
+                string filePath = @"D:\C# Programs\AddressBookApplication\AddressBookApplication\ContactFile.txt";
+                using (StreamWriter streamWriter = File.AppendText(filePath))
+                {
+                    for (int i = 0; i < contactList.Count; i++)
+                    {
+                        c = contactList[i];
+                        line = c.FirstName + " " + c.LastName + " " + c.MobileNumber + " " + c.Zip + " " + c.State + " " + c.City;
+                        streamWriter.WriteLine(line);
+                    }
+                }
+            }
+            catch (IOException)
+            {
+                Console.WriteLine("File not found");
             }
         }
     }
