@@ -319,6 +319,36 @@ namespace AddressBookApplication
                 return true;
             }
         }
+
+        /// <summary>
+        /// Searchings the state of the contact details by.
+        /// </summary>
+        /// <param name="searchState">State of the search.</param>
+        /// <returns></returns>
+        /// <exception cref="AddressBookCustomException">State name is not in list</exception>
+        public bool SearchingContactDetailsByState(string searchState)
+        {
+            //used to check if city exist and increments the index. If index=0, exception is thrown
+            int index = 0;
+            foreach (Contact contactPerson in contactList)
+            {
+                //checks if city is there in list
+                if (contactPerson.City.Equals(searchState))
+                {
+                    Console.WriteLine($"First Name : {contactPerson.FirstName} || Last Name: {contactPerson.LastName} || Address: {contactPerson.Address} || City: {contactPerson.City} || State: {contactPerson.State}|| zip: {contactPerson.Zip} || Phone No: {contactPerson.MobileNumber} || eMail: {contactPerson.Email}");
+                    index++;
+                }
+            }
+            if (index == 0)
+            {
+                //custom exception is thrown when city is not in list
+                throw new AddressBookCustomException(AddressBookCustomException.ExceptionType.WRONG_STATE_NAME, "State name is not in list");
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }
 

@@ -138,6 +138,44 @@ namespace AddressBookApplication
         }
 
         /// <summary>
+        /// Searchings the state of the by.
+        /// </summary>
+        public void SearchingByState()
+        {
+            try
+            {
+                Console.WriteLine("Please enter the city");
+                string searchState = Console.ReadLine();
+
+                //foreach loop to print name of address book and pass address book value to contact person information class
+                foreach (KeyValuePair<string, AddressBook> keyValuePair in addressBookDictionary)
+                {
+                    Console.WriteLine("Name of the address book: " + keyValuePair.Key);
+                    AddressBook addressBook = keyValuePair.Value;
+                    bool checkForException = addressBook.SearchingContactDetailsByState(searchState);
+                }
+            }
+            //catches exception if state name does not exist
+            catch (AddressBookCustomException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Do you want to enter city again, press y for yes");
+                string checkInput = Console.ReadLine();
+                if (checkInput.ToLower() == "y")
+                {
+                    SearchingByState();
+                }
+                else
+                {
+                    Console.WriteLine("No city entered");
+
+                }
+            }
+        }
+
+
+
+        /// <summary>
         /// Directories the display menu.
         /// </summary>
         public void DirectoryDisplayMenu()
@@ -146,7 +184,8 @@ namespace AddressBookApplication
             Console.WriteLine("Press 2 to Access Address Book");
             Console.WriteLine("Press 3 to View Address Book");
             Console.WriteLine("Press 4 to Search Contacts by City");
-            Console.WriteLine("Press 5 to exit");
+            Console.WriteLine("Press 5 to Search Contacts by State");
+            Console.WriteLine("Press 6 to exit");
         }
 
         /// <summary>
@@ -174,6 +213,9 @@ namespace AddressBookApplication
                         SearchingByCity();
                         break;
                     case 5:
+                        SearchingByCity();
+                        break;
+                    case 6:
                         flag = false;
                         break;
                     default:
