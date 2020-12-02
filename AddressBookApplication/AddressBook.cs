@@ -281,7 +281,7 @@ namespace AddressBookApplication
                         break;
                     case 4:
                         ViewContact();
-                        break;                  
+                        break;
                     case 5:
                         flag = false;
                         break;
