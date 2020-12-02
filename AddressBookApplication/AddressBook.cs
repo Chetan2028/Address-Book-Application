@@ -12,6 +12,8 @@ namespace AddressBookApplication
 
         /// To add contact in list
         List<Contact> contactList = new List<Contact>();
+        HashSet<string> cityList = new HashSet<string>();
+        HashSet<string> stateList = new HashSet<string>();
 
         /// <summary>
         /// Adds the contact.
@@ -279,7 +281,7 @@ namespace AddressBookApplication
                         break;
                     case 4:
                         ViewContact();
-                        break;
+                        break;                  
                     case 5:
                         flag = false;
                         break;
@@ -348,6 +350,77 @@ namespace AddressBookApplication
             {
                 return true;
             }
+        }
+
+        public List<Contact> AddingContactDetailsByCity(string cityName, List<Contact> cityDetailsList)
+        {
+            //foreach loop iterates over each contact person details, and if city matches, contact details are added in list
+            //loop runs until all the values are searched in one addressbook, contact detail list.
+            //returns the citydetail list from one addressbook
+            //same city detail list is received as a parameter for other address book
+            foreach (Contact contactPerson in contactList)
+            {
+                //checks if city is there in list
+                if (contactPerson.City.Equals(cityName))
+                {
+                    cityDetailsList.Add(contactPerson);
+                }
+            }
+            return cityDetailsList;
+        }
+        /// <summary>
+        /// Gets hashset of all the cities in particular contact list
+        /// </summary>
+        /// <returns></returns>
+        public HashSet<string> GettingCityList()
+        {
+            //foreach loop is used to get each entry in contact list in address book
+            //each city is taken out and added in cityList which is hashset
+            //hashset is returned
+            foreach (Contact contactPerson in contactList)
+            {
+                cityList.Add(contactPerson.City);
+            }
+            return cityList;
+        }
+
+        /// <summary>
+        /// Adding contact details by state in list
+        /// </summary>
+        /// <param name="stateName"></param>
+        /// <param name="stateDetailsList">city details list obtained from other address books</param>
+        /// <returns>list of contact details from one address book</returns>
+        public List<Contact> AddingContactDetailsByState(string stateName, List<Contact> stateDetailsList)
+        {
+            //foreach loop iterates over each contact person details, and if state matches, contact details are added in list
+            //loop runs until all the values are searched in one addressbook, contact detail list.
+            //returns the statedetail list from one addressbook
+            //same state detail list is received as a parameter for other address book
+            foreach (Contact contactPerson in contactList)
+            {
+                //checks if state is there in list
+                if (contactPerson.State.Equals(stateName))
+                {
+                    stateDetailsList.Add(contactPerson);
+                }
+            }
+            return stateDetailsList;
+        }
+
+        /// <summary>
+        /// Gets hashset of all the states in particular contact list
+        /// </summary>
+        /// <returns></returns>
+        public HashSet<string> GettingStateList()
+        {
+            //foreach loop is used to get each entry in contact list in address book
+            //each state is taken out and added in stateList which is hashset
+            //hashset is returned
+            foreach (Contact contactPerson in contactList)
+            {
+                stateList.Add(contactPerson.State);
+            }
+            return stateList;
         }
     }
 }
