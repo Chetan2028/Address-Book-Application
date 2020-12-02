@@ -1,8 +1,10 @@
 ﻿using CsvHelper;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace AddressBookApplication
@@ -116,7 +118,8 @@ namespace AddressBookApplication
             Console.WriteLine("Press 6 to Write Data into Text File");
             Console.WriteLine("Press 7 to Write Data into CSV File");
             Console.WriteLine("Press 8 to Read Data from CSV File");
-            Console.WriteLine("Press 9 to Exit");
+            Console.WriteLine("Press 9 to Write Data into JSON File");
+            Console.WriteLine("Press 10 to Exit");
         }
 
         /// <summary>
@@ -302,6 +305,9 @@ namespace AddressBookApplication
                         ReadDataFromCSV();
                         break;
                     case 9:
+                        WriteDataIntoJSONFile();
+                        break;
+                    case 10:
                         flag = false;
                         break;
                     default:
@@ -507,8 +513,8 @@ namespace AddressBookApplication
         public void WriteDataIntoCSVFile(List<Contact> record)
         {
             string filePath = @"D:\C# Programs\AddressBookApplication\AddressBookApplication\contacts.csv";
-            using(var writer = new StreamWriter(filePath))
-            using(var csvWrite = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            using (var writer = new StreamWriter(filePath))
+            using (var csvWrite = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
                 csvWrite.WriteRecords(record);
             }
@@ -517,8 +523,8 @@ namespace AddressBookApplication
         public void ReadDataFromCSV()
         {
             string filePath = @"D:\C# Programs\AddressBookApplication\AddressBookApplication\contacts.csv";
-            using(var reader = new StreamReader(filePath))
-            using(var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            using (var reader = new StreamReader(filePath))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
                 var records = csv.GetRecords<Contact>();
                 foreach (Contact contact in records)
@@ -535,6 +541,26 @@ namespace AddressBookApplication
                 }
             }
         }
+
+        public void WriteDataIntoJSONFile()
+        {
+            string importFilePath = @"D:\C# Programs\AddressBookApplication\AddressBookApplication\contacts.csv";
+            string exportFilePath = @"D:\C# Programs\AddressBookApplication\AddressBookApplication\contacts.json";
+
+            using (var reader = new StreamReader(importFilePath))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var records = csv.GetRecords<Contact>().ToList();
+
+                JsonSerializer jsonSeriallize = new JsonSerializer();
+                using (var writer = new StreamWriter(exportFilePath))
+                using (JsonWriter jsonwriter = new JsonTextWriter(writer))
+                {
+                    jsonSeriallize.Serialize(jsonwriter, records);
+                }
+            }
+        }
+
     }
 }
 
